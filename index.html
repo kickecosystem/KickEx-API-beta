@@ -333,7 +333,7 @@
 <p>For client authentication and integrity control the following attributes should be added to the request headers:</p>
 
 <ul>
-<li>KICK-API-KEY - API key (format (?))</li>
+<li>KICK-API-KEY - API key (it is provided in <em>base64url</em> format and needs to be decoded to binary format before KICK-SIGNATURE generation)</li>
 <li>KICK-API-PASS - API key passphrase (format (?))</li>
 <li>KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)</li>
 <li>KICK-SIGNATURE - request signature (format (?))</li>
@@ -615,7 +615,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
     </span><span class="s2">"pairName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC/USDT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"high24"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3425.0092"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"low24"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3389.1294"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amountVol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91572919"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amountVol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91582919"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27020.6311"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3421.7623"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3420.4223"</span><span class="p">,</span><span class="w">
