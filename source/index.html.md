@@ -27,7 +27,7 @@ Welcome to the External API for KickEX exchange.
 
 For client authentication and integrity control the following attributes should be added to the request headers:
 
-* KICK-API-KEY - API key (format (?))
+* KICK-API-KEY - API key (it is provided in *base64url* format and needs to be decoded to binary format before KICK-SIGNATURE generation)
 * KICK-API-PASS - API key passphrase (format (?))
 * KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)
 * KICK-SIGNATURE - request signature (format (?))
@@ -104,7 +104,7 @@ type | string | Yes | Currently the only valid value is 'market'
 ### Response Parameters
 Parameter | Type | Required | Description
 --------- | ----------- | ----------- | -----------
-pairName | string | Yes   | Currency pair name *(ex: BTC/USDT)*
+pairName | string | Yes | Currency pair name *(ex: BTC/USDT)*
 baseCurrency | string | Yes | Base currency name *(ex: BTC)*
 quoteCurrencу | string | Yes | Quotes currency name *(ex: USDT)*
 baseMinSIze | string | Yes | Minimum amount of base currency for order creation
@@ -203,7 +203,7 @@ curl "http://example.com/api/v1/market/stats24?pairName=BTC/USDT"
 	"pairName": "BTC/USDT",
 	"high24": "3425.0092",
 	"low24": "3389.1294",
-	"amountVol": "91572919",
+	"amountVol": "91582919",
 	"baseVol": "27020.6311",
 	"lastPrice": "3421.7623",
 	"bestBid": "3420.4223",
