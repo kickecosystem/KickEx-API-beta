@@ -670,7 +670,7 @@ curl "http://example.com/api/v1/orders?pairName=BTC/USDT&orderType=STOP"
 Параметр | Тип | Обязательный | Описание
 --------- | ----------- | ----------- | -----------
 pairName | string | Нет | Наименование криптовалютной пары в формате KICK/ETH
-orderType | string | Нет | тип отмены stop/limit/all, если параметр не задан, по умолчанию работает all
+orderType | string | Нет | тип отмены stop/trade/all, если параметр не задан, по умолчанию работает all
 
 ### Параметры ответа
 
