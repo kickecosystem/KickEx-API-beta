@@ -653,7 +653,7 @@ curl "http://example.com/api/v1/orders?pairName=BTC/USDT&orderType=STOP"
 Parameter | Type | Required | Description
 --------- | ----------- | ----------- | -----------
 pairName | string | No | Currency pair name *(ex: KICK/ETH)*
-orderType | string | No | Type of the orders to cancel (stop/limit/all), missing order type is treated as "all".
+orderType | string | No | Type of the orders to cancel (stop/trade/all), missing order type is treated as "all".
 
 ### Response Parameters
 
