@@ -315,6 +315,23 @@
               </ul>
           </li>
           <li>
+            <a href="#websocket-endpoint" class="toc-h1 toc-link" data-title="WebSocket endpoint">WebSocket endpoint</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#b2b306893f" class="toc-h2 toc-link" data-title="Общие определения">Общие определения</a>
+                  </li>
+                  <li>
+                    <a href="#orderbook-api" class="toc-h2 toc-link" data-title="Orderbook API">Orderbook API</a>
+                  </li>
+                  <li>
+                    <a href="#currency-pairs" class="toc-h2 toc-link" data-title="Currency Pairs">Currency Pairs</a>
+                  </li>
+                  <li>
+                    <a href="#43f9dc40ab" class="toc-h2 toc-link" data-title="История торгов по выбранной торговой паре">История торгов по выбранной торговой паре</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -2845,7 +2862,286 @@ $api_secret, true));
 <td>Если чейнов несколько, как с USDT, то отображается чейн на который был вывод</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+<h1 id='websocket-endpoint'>WebSocket endpoint</h1><h2 id='b2b306893f'>Общие определения</h2>
+<blockquote>
+<p>Пример запроса</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"someType"</span><span class="p">,</span><span class="w">             </span><span class="err">//Тип</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответ в случае ошибки</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w"> </span><span class="err">(тот</span><span class="w"> </span><span class="err">же</span><span class="p">,</span><span class="w"> </span><span class="err">что</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">запросе)</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span><span class="err">//ошибка</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">29000</span><span class="p">,</span><span class="w">              </span><span class="err">//код</span><span class="w"> </span><span class="err">ошибки</span><span class="w">
+        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error reason"</span><span class="w">    </span><span class="err">//текст</span><span class="w"> </span><span class="err">ошибки</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dev_error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                  </span><span class="err">//отладочная</span><span class="w"> </span><span class="err">информация</span><span class="w"> </span><span class="err">об</span><span class="w"> </span><span class="err">ошибке</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5607</span><span class="p">,</span><span class="w">               </span><span class="err">//внутренний</span><span class="w"> </span><span class="err">код</span><span class="w"> </span><span class="err">ошибки</span><span class="w">
+        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal reason"</span><span class="w"> </span><span class="err">//внутренний</span><span class="w"> </span><span class="err">текст</span><span class="w"> </span><span class="err">ошибки</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ошибка в случае слишком большого объёма данных </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">19008</span><span class="p">,</span><span class="w"> </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer is too big"</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Адрес для подключения клиента к веб-сокету: <a href="http://gate.kickex.com">http://gate.kickex.com</a></p>
+
+<p>Основная часть запросов содержит два обязательных поля: <strong>id</strong> и <strong>type</strong>. </p>
+
+<p><strong>id</strong> - это идентификатор запроса. Произвольная строка. Генерируется клиентом. Предполагается, что каждый запрос будет иметь уникальный идентификатор. Тот же самый идентификатор без изменения возвращается в ответе шлюза. Длина id не более 10KB.</p>
+
+<p><strong>type</strong> - это тип запроса</p>
+
+<p>В случае ошибки, в ответе сервера присутствует <strong>только</strong> идентификатор запроса и поле <strong>error</strong> содержащее код и текст ошибки. На Dev серверах дополнительно возвращается поле <strong>dev_error</strong> с внутренним кодом и текстом ошибки.</p>
+
+<p>Еще одна специальная ошибка возвращается, когда превышен размер буфера ответа. Это происходит, если ответ от внутреннего сервера слишком большой, либо клиент не успевает вычитывать данные. В этом ответе нет идентификатора запроса.</p>
+
+<p>Как правило, получение такой ошибки означает, что были потеряны одно или более сообщений. В том числе, это могут значимые сообщения об изменении состояния ордеров, балансе пользователя.</p>
+
+<p>Существует возможность увеличения размера буфера для ответов сервера, например, для целей автоматической торговли. Это можно сделать с помощью технической поддержки.</p>
+
+<p>Если сервер получает невалидный JSON в качестве запроса, то в ответе придет ошибка <strong>ER_MALFORMED_JSON</strong> и не будет поля идентификатора запроса.</p>
+<h3 id='9ee01f088e'>Состояние шлюза</h3>
+<blockquote>
+<p>Запрос</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status"</span><span class="p">,</span><span class="w">               </span><span class="err">//Тип</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accounting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="err">//состояние</span><span class="w"> </span><span class="err">подключения</span><span class="w"> </span><span class="err">к</span><span class="w"> </span><span class="err">учету</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"callbacks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"kickid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                     </span><span class="err">//состояние</span><span class="w"> </span><span class="err">подключения</span><span class="w"> </span><span class="err">к</span><span class="w"> </span><span class="err">KICKID</span><span class="w"> </span><span class="err">Tarantool</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"callbacks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="err">//состояние</span><span class="w"> </span><span class="err">подключения</span><span class="w"> </span><span class="err">к</span><span class="w"> </span><span class="err">статистике</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"callbacks"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"walletbc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                   </span><span class="err">//состояние</span><span class="w"> </span><span class="err">подключения</span><span class="w"> </span><span class="err">к</span><span class="w"> </span><span class="err">wallet</span><span class="w">
+        </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONNECTING"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='220afdba73'>Пинг</h3>
+<p>Клиент должен постоянно посылать указанные ниже ping запросы, чтобы сервер не закрыл соединение. Соединение закрывается, если от клиента за минуту не пришло ни одного фрейма. То есть вместо ping также будет работать любой произвольный запрос.</p>
+
+<blockquote>
+<p>Запрос</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ping"</span><span class="p">,</span><span class="w">                 </span><span class="err">//Тип</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='orderbook-api'>Orderbook API</h2><h3 id='da284c78b3'>Получение стакана и подписка</h3>
+<p>Ответы по подписке. </p>
+
+<p>Каждый ответ это инкрементное изменение стакана. В массивах bids, asks передаются строки которые меняются.</p>
+
+<p>Если в поле total находится пустая строка, то строку нужно удалить из стакана. В противном случае строка добавляется или заменяется.</p>
+
+<blockquote>
+<p>Запрос</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getOrderBookAndSubscribe"</span><span class="p">,</span><span class="w">     </span><span class="err">//Тип</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KICK/ETH"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"bids"</span><span class="p">:[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"152.7"</span><span class="p">,</span><span class="w">               </span><span class="err">//цена</span><span class="w"> </span><span class="err">валютной</span><span class="w"> </span><span class="err">пары</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545.3"</span><span class="p">,</span><span class="w">             </span><span class="err">//количество</span><span class="w"> </span><span class="err">базовой</span><span class="w"> </span><span class="err">валюты</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"455.22"</span><span class="w">               </span><span class="err">//всего</span><span class="w"> </span><span class="err">(в</span><span class="w"> </span><span class="err">котируемой</span><span class="w"> </span><span class="err">валюте)</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.7"</span><span class="p">,</span><span class="w">                </span><span class="err">//цена</span><span class="w"> </span><span class="err">валютной</span><span class="w"> </span><span class="err">пары</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"485.3"</span><span class="p">,</span><span class="w">              </span><span class="err">//количество</span><span class="w"> </span><span class="err">базовой</span><span class="w"> </span><span class="err">валюты</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4562.55"</span><span class="w">              </span><span class="err">//всего</span><span class="w"> </span><span class="err">(в</span><span class="w"> </span><span class="err">котируемой</span><span class="w"> </span><span class="err">валюте)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"lastPrice"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545,                 //цена валютной пары
+        "</span><span class="err">type</span><span class="s2">": -1/0/1                  // -1 цена понизилась
+                                        // 0 цена не изменилась
+                                        // 1 цена возросла
+    }
+}
+</span></code></pre>
+<blockquote>
+<p>Изменившиеся данные</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dihfbeibf"</span><span class="p">,</span><span class="w">      </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"bids"</span><span class="p">:[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"152.7"</span><span class="p">,</span><span class="w">               </span><span class="err">//цена</span><span class="w"> </span><span class="err">валютной</span><span class="w"> </span><span class="err">пары</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545.3"</span><span class="p">,</span><span class="w">             </span><span class="err">//количество</span><span class="w"> </span><span class="err">базовой</span><span class="w"> </span><span class="err">валюты</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"455.22"</span><span class="w">               </span><span class="err">//всего</span><span class="w"> </span><span class="err">(в</span><span class="w"> </span><span class="err">котируемой</span><span class="w"> </span><span class="err">валюте)</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.7"</span><span class="p">,</span><span class="w">                </span><span class="err">//цена</span><span class="w"> </span><span class="err">валютной</span><span class="w"> </span><span class="err">пары</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"485.3"</span><span class="p">,</span><span class="w">              </span><span class="err">//количество</span><span class="w"> </span><span class="err">базовой</span><span class="w"> </span><span class="err">валюты</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4562.55"</span><span class="w">              </span><span class="err">//всего</span><span class="w"> </span><span class="err">(в</span><span class="w"> </span><span class="err">котируемой</span><span class="w"> </span><span class="err">валюте)</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">                                   </span><span class="err">//Строка</span><span class="w"> </span><span class="err">для</span><span class="w"> </span><span class="err">удаления</span><span class="w"> </span><span class="err">из</span><span class="w"> </span><span class="err">стакана.</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">должен</span><span class="w"> </span><span class="err">быт</span><span class="w"> </span><span class="err">пустой</span><span class="w"> </span><span class="err">строкой</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.7"</span><span class="p">,</span><span class="w">                </span><span class="err">//цена</span><span class="w"> </span><span class="err">валютной</span><span class="w"> </span><span class="err">пары</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NaN"</span><span class="p">,</span><span class="w">                </span><span class="err">//количество</span><span class="w"> </span><span class="err">базовой</span><span class="w"> </span><span class="err">валюты</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">                     </span><span class="err">//</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"lastPrice"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545,                 //цена валютной пары
+        "</span><span class="err">type</span><span class="s2">": -1/0/1                  // -1 цена понизилась
+                                        // 0 цена не изменилась
+                                        // 1 цена возросла
+    }
+}```
+
+### Отписка от обновлений
+
+&gt; Запрос (отписка от обновлений)
+
+```json
+{
+    "</span><span class="err">id</span><span class="s2">": "</span><span class="err">dsncjksdnc</span><span class="s2">",                 //идентификатор запроса
+    "</span><span class="err">type</span><span class="s2">": "</span><span class="err">unsubscribeOrderBook</span><span class="s2">",     //Тип запроса
+}
+</span></code></pre>
+<blockquote>
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='currency-pairs'>Currency Pairs</h2><h3 id='109f623f52'>Подписка</h3>
+<blockquote>
+<p>Запрос (подписка)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getPairsAndSubscribe"</span><span class="p">,</span><span class="w">             </span><span class="err">//Тип</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответы (по подписке)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"pairs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"baseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">          </span><span class="err">//базовая</span><span class="w"> </span><span class="err">валюта</span><span class="w">
+        </span><span class="s2">"quoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">         </span><span class="err">//котируемая</span><span class="w"> </span><span class="err">валюта</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"228.5698565"</span><span class="p">,</span><span class="w">         </span><span class="err">//цена</span><span class="w"> </span><span class="err">валютной</span><span class="w"> </span><span class="err">пары</span><span class="w">
+        </span><span class="s2">"price24hChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1.5"</span><span class="p">,</span><span class="w">       </span><span class="err">//изменение</span><span class="w"> </span><span class="err">цены</span><span class="w"> </span><span class="err">за</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">часа</span><span class="w">
+        </span><span class="s2">"volume24hChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258.55"</span><span class="p">,</span><span class="w">   </span><span class="err">//изменение</span><span class="w"> </span><span class="err">объема</span><span class="w"> </span><span class="err">за</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">часа</span><span class="w"> </span><span class="err">(в</span><span class="w"> </span><span class="err">котируемой</span><span class="w"> </span><span class="err">валюте)</span><span class="w">
+        </span><span class="s2">"amount24hChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.55"</span><span class="p">,</span><span class="w">     </span><span class="err">//изменение</span><span class="w"> </span><span class="err">количества</span><span class="w"> </span><span class="err">за</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">часа</span><span class="w"> </span><span class="err">(в</span><span class="w"> </span><span class="err">базовой</span><span class="w"> </span><span class="err">валюте)</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"lowPrice24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"220.0"</span><span class="p">,</span><span class="w">        </span><span class="err">//наименьшая</span><span class="w"> </span><span class="err">историческая</span><span class="w"> </span><span class="err">цена</span><span class="w"> </span><span class="err">за</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">часа</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"highPrice24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230.0"</span><span class="p">,</span><span class="w">       </span><span class="err">//наибольшая</span><span class="w"> </span><span class="err">историческая</span><span class="w"> </span><span class="err">цена</span><span class="w"> </span><span class="err">за</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">часа</span><span class="w">
+        </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">                </span><span class="err">//Точность</span><span class="w"> </span><span class="err">цены</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">ордере</span><span class="w">
+        </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">             </span><span class="err">//Точность</span><span class="w"> </span><span class="err">количества</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">ордере</span><span class="w">
+        </span><span class="s2">"volumeScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">               </span><span class="err">//Точность</span><span class="w"> </span><span class="err">объема</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">ордере</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"minQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">       </span><span class="err">//Минимальное</span><span class="w"> </span><span class="err">количество</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"minVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">         </span><span class="err">//Минимальный</span><span class="w"> </span><span class="err">Объем</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">                      </span><span class="err">//Состояние</span><span class="w">
+                                        </span><span class="err">//DRAFT</span><span class="w">    </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">--</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                                        </span><span class="err">//REJECTED</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">--</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                                        </span><span class="err">//BLOCKED</span><span class="w">  </span><span class="err">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="err">--</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                                        </span><span class="err">//COMMITED</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">4</span><span class="w">  </span><span class="err">--</span><span class="w"> </span><span class="mi">4</span><span class="w">
+
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='0ceb4818d2'>Отписка от обновлений</h3>
+<blockquote>
+<p>Запрос (отписка от обновлений)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribePairs"</span><span class="p">,</span><span class="w">         </span><span class="err">//Тип</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "id": "dsncjksdnc",                 //идентификатор запроса
+}
+</code></pre><h2 id='43f9dc40ab'>История торгов по выбранной торговой паре</h2><h3 id='109f623f52-2'>Подписка</h3>
+<blockquote>
+<p>Запрос (подписка)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getHistoryAndSubscribe"</span><span class="p">,</span><span class="w">   </span><span class="err">//Создание</span><span class="w"> </span><span class="err">торгового</span><span class="w"> </span><span class="err">ордера</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">формирование</span><span class="w"> </span><span class="err">резервов.</span><span class="w">
+    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KICK/ETH"</span><span class="p">,</span><span class="w">                 </span><span class="err">//Идентификатор</span><span class="w"> </span><span class="err">торговой</span><span class="w"> </span><span class="err">пары</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответы</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w"> </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"history"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="err">price</span><span class="p">:</span><span class="w"> </span><span class="mf">455.55</span><span class="p">,</span><span class="w">              </span><span class="err">//цена</span><span class="w"> </span><span class="err">валютной</span><span class="w"> </span><span class="err">пары</span><span class="w">
+        </span><span class="err">amount</span><span class="p">:</span><span class="w"> </span><span class="mf">228.1488</span><span class="p">,</span><span class="w">           </span><span class="err">//количество</span><span class="w"> </span><span class="err">базовой</span><span class="w"> </span><span class="err">валюты</span><span class="w">
+        </span><span class="err">timestamp</span><span class="p">:</span><span class="w"> </span><span class="mi">156454565645</span><span class="p">,</span><span class="w">    </span><span class="err">//временная</span><span class="w"> </span><span class="err">метка</span><span class="w"> </span><span class="err">сделки</span><span class="w">
+        </span><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell/buy"</span><span class="w"> </span><span class="p">},</span><span class="w">         </span><span class="err">//покупка</span><span class="w"> </span><span class="err">или</span><span class="w"> </span><span class="err">продажа</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>В первом ответе возвращается полный список последних сделок, в последующих ответах возращаются инкрементные обновления.</p>
+<h3 id='0ceb4818d2-2'>Отписка от обновлений</h3>
+<blockquote>
+<p>Запрос (отписка)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribeHistory"</span><span class="p">,</span><span class="w">       </span><span class="err">//Тип</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//идентификатор</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
