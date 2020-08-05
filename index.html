@@ -315,6 +315,23 @@
               </ul>
           </li>
           <li>
+            <a href="#websocket-endpoint" class="toc-h1 toc-link" data-title="WebSocket endpoint">WebSocket endpoint</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#common" class="toc-h2 toc-link" data-title="Common">Common</a>
+                  </li>
+                  <li>
+                    <a href="#orderbook-api" class="toc-h2 toc-link" data-title="Orderbook API">Orderbook API</a>
+                  </li>
+                  <li>
+                    <a href="#currency-pairs" class="toc-h2 toc-link" data-title="Currency Pairs">Currency Pairs</a>
+                  </li>
+                  <li>
+                    <a href="#trade-history-for-currency-pair" class="toc-h2 toc-link" data-title="Trade history for currency pair">Trade history for currency pair</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -2837,7 +2854,286 @@ Authorization is needed to use these methods.
 <td>Blockchain short name (required for cryptocurrencies available in several blockchains)</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+<h1 id='websocket-endpoint'>WebSocket endpoint</h1><h2 id='common'>Common</h2>
+<blockquote>
+<p>Sample request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"someType"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">type</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Sample response (error)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span><span class="err">//</span><span class="w"> 
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">29000</span><span class="p">,</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Error</span><span class="w"> </span><span class="err">code</span><span class="w">
+        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error reason"</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Error</span><span class="w"> </span><span class="err">description</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dev_error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Debugger</span><span class="w"> </span><span class="err">level</span><span class="w"> </span><span class="err">information</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5607</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Internal</span><span class="w"> </span><span class="err">error</span><span class="w"> </span><span class="err">code</span><span class="w">
+        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal reason"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Internal</span><span class="w"> </span><span class="err">error</span><span class="w"> </span><span class="err">description</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Error (data exceeds limit)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">19008</span><span class="p">,</span><span class="w"> </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer is too big"</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>WebSocket client should be connected to: <a href="http://gate.kickex.com">http://gate.kickex.com</a></p>
+
+<p>Common part of all requests has two required attributes: <strong>id</strong> and <strong>type</strong>. </p>
+
+<p><strong>id</strong> is a request identifier, unformatted string generated by the client. Supposed to be unique, the same identifier will be returned in the response. <strong>id</strong> length should be less than 10KB.</p>
+
+<p><strong>type</strong> is the type of the request.</p>
+
+<p>In case of error server reponse contains only <strong>id</strong> and <strong>error</strong> object with error code and error reason (description). On development environment <strong>dev_error</strong> object is returned.</p>
+
+<p>There is a special error in case when the server answer exceeds internal buffer limit or when client didn&#39;t manage to fetch the data. This response doesn&#39;t contain <strong>id</strong> field.</p>
+
+<p>Usually getting this response means that one or more messages (including important messages regarding orders or user&#39;s balance) were lost.</p>
+
+<p>There is a possibility to extend the buffer limit via the technical support.</p>
+
+<p>If an invalid JSON was sent as a request, the response will contain <strong>ER_MALFORMED_JSON</strong> error and won&#39;t contain <strong>id</strong>.</p>
+<h3 id='gateway-status'>Gateway status</h3>
+<blockquote>
+<p>Request
+<code>json
+{
+    &quot;id&quot;: &quot;dsncjksdnc&quot;,             // Request identifier
+    &quot;type&quot;: &quot;status&quot;,               // Request type
+}
+</code></p>
+
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accounting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Accounting</span><span class="w"> </span><span class="err">connection</span><span class="w"> </span><span class="err">status</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"callbacks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"kickid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">KickID</span><span class="w"> </span><span class="err">Tarantool</span><span class="w"> </span><span class="err">connection</span><span class="w"> </span><span class="err">status</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"callbacks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Statistics</span><span class="w"> </span><span class="err">connection</span><span class="w"> </span><span class="err">status</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"callbacks"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"walletbc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">Wallet</span><span class="w"> </span><span class="err">connection</span><span class="w"> </span><span class="err">status</span><span class="w">
+        </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONNECTING"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='ping'>Ping</h3>
+<p>Client should be sending the following <strong>ping</strong> to prevent closing the connection from the server. Connection gets closed if the client doesn&#39;t send any frames within 1 minute. Instead of <strong>ping</strong> request any other request coud be sent.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ping"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">type</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='orderbook-api'>Orderbook API</h2><h3 id='get-orderbook-and-subscribe'>Get orderbook and subscribe</h3>
+<p>Responses by subscription.</p>
+
+<p>Every new response is an incremental change of the orderbook. Strings that were changed since the previous update are contained in <strong>bids</strong> and <strong>asks</strong> arrays.</p>
+
+<p>If <strong>total</strong> attribute contains an empty string then the line should be removed from the orderbook. Otherwise the line is added or updated.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getOrderBookAndSubscribe"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">type</span><span class="w">
+    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KICK/ETH"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"bids"</span><span class="p">:[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"152.7"</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545.3"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">currency</span><span class="w"> </span><span class="err">amount</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"455.22"</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">currency)</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.7"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"485.3"</span><span class="p">,</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">currency</span><span class="w"> </span><span class="err">amount</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4562.55"</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">currency)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"lastPrice"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545,                 // Currency pair price
+        "</span><span class="err">type</span><span class="s2">": -1/0/1                  // -1 price became lower
+                                        // 0 price didn't change
+                                        // 1 price became higher
+    }
+}
+</span></code></pre>
+<blockquote>
+<p>Updated data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dihfbeibf"</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"bids"</span><span class="p">:[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"152.7"</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545.3"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">currency</span><span class="w"> </span><span class="err">amount</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"455.22"</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">currency)</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.7"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"485.3"</span><span class="p">,</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">currency</span><span class="w"> </span><span class="err">amount</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4562.55"</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">currency)</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">Line</span><span class="w"> </span><span class="err">should</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">removed</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">orderbook.</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">empty</span><span class="w"> </span><span class="err">string.</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.7"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NaN"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">currency</span><span class="w"> </span><span class="err">amount</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">currency)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="p">],</span><span class="w">
+
+    </span><span class="s2">"lastPrice"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4545,                 // Currency pair price
+        "</span><span class="err">type</span><span class="s2">": -1/0/1                  // -1 price became lower
+                                        // 0 price didn't change
+                                        // 1 price became higher
+    }
+}```
+
+### Unsubscribe from updates
+
+&gt; Request (unsubscribe)
+
+```json
+{
+    "</span><span class="err">id</span><span class="s2">": "</span><span class="err">dsncjksdnc</span><span class="s2">",                 // Request identifier
+    "</span><span class="err">type</span><span class="s2">": "</span><span class="err">unsubscribeOrderBook</span><span class="s2">",     // Request type
+}
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='currency-pairs'>Currency Pairs</h2><h3 id='subscribe'>Subscribe</h3>
+<blockquote>
+<p>Request (subscribe)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getPairsAndSubscribe"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">type</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответы (по подписке)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"pairs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"baseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">          </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">currency</span><span class="w">
+        </span><span class="s2">"quoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Quote</span><span class="w"> </span><span class="err">currency</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"228.5698565"</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"price24hChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1.5"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Price</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">during</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w">
+        </span><span class="s2">"volume24hChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258.55"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Volume</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">during</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">currency)</span><span class="w">
+        </span><span class="s2">"amount24hChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.55"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">Amount</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">during</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">currency)</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"lowPrice24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"220.0"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">Lowest</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">during</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"highPrice24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230.0"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Highest</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">during</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w">
+        </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">precision</span><span class="w">
+        </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">precision</span><span class="w">
+        </span><span class="s2">"volumeScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">precision</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"minQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Minimum</span><span class="w"> </span><span class="err">quantity</span><span class="w">
+        </span><span class="err">?</span><span class="s2">"minVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Minimum</span><span class="w"> </span><span class="err">volume</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">State</span><span class="w">
+                                        </span><span class="err">//</span><span class="w"> </span><span class="err">DRAFT</span><span class="w">    </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">--</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                                        </span><span class="err">//</span><span class="w"> </span><span class="err">REJECTED</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">--</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                                        </span><span class="err">//</span><span class="w"> </span><span class="err">BLOCKED</span><span class="w">  </span><span class="err">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="err">--</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                                        </span><span class="err">//</span><span class="w"> </span><span class="err">COMMITED</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">4</span><span class="w">  </span><span class="err">--</span><span class="w"> </span><span class="mi">4</span><span class="w">
+
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='unsubscribe'>Unsubscribe</h3>
+<blockquote>
+<p>Request (unsubscribe)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribePairs"</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">type</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "id": "dsncjksdnc",                 // Request identifier
+}
+</code></pre><h2 id='trade-history-for-currency-pair'>Trade history for currency pair</h2><h3 id='subscribe-2'>Subscribe</h3>
+<blockquote>
+<p>Request (subscribe)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getHistoryAndSubscribe"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">type</span><span class="w">
+    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KICK/ETH"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"history"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="err">price</span><span class="p">:</span><span class="w"> </span><span class="mf">455.55</span><span class="p">,</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Currency</span><span class="w"> </span><span class="err">pair</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="err">amount</span><span class="p">:</span><span class="w"> </span><span class="mf">228.1488</span><span class="p">,</span><span class="w">           </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">currency</span><span class="w"> </span><span class="err">amount</span><span class="w">
+        </span><span class="err">timestamp</span><span class="p">:</span><span class="w"> </span><span class="mi">156454565645</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Trade</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+        </span><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell/buy"</span><span class="w"> </span><span class="p">},</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Trade</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">(sell/buy)</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>First response contains full list of latest deals, the following responses contain incremental updates.</p>
+<h3 id='unsubscribe-2'>Unsubscribe</h3>
+<blockquote>
+<p>Request unsubscribe</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribeHistory"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">type</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ответ</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsncjksdnc"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">identifier</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
