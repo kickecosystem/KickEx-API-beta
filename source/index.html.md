@@ -324,7 +324,7 @@ curl "http://example.com/api/v1/currencies?currency=ETH"
 
 ### HTTP Request
 
-`GET https://example.com/api/v1/minibars`
+`GET https://example.com/api/v1/currencies?currency=ETH`
 
 ### URL Parameters
 
@@ -1725,7 +1725,7 @@ First response contains full list of latest deals, the following responses conta
 
 ```json
 {
-    "id": "dsncjksdnc",                 // Request identifier
+    "id": "dsncjlksdnc",                 // Request identifier
     "type": "unsubscribeHistory",       // Request type
 }
 ```
@@ -1737,3 +1737,4 @@ First response contains full list of latest deals, the following responses conta
     "id": "dsncjksdnc",                 // Request identifier
 }
 ```
+
