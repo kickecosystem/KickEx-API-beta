@@ -40,6 +40,7 @@ base64_encode(hash_hmac("sha512",
 	$body, true),
 $api_secret, true));
 ```
+
 Цифровой отпечаток запроса предназначен для контроля целостности получаемых сервером данных. В формировании цифрового отпечатка используется **API Secret**, который не передается от клиента к серверу в процессе работы с REST API.
 Цифровой отпечаток запроса создается на основе:
 
@@ -58,7 +59,7 @@ $api_secret, true));
 ## Pairs
 
 ```shell
-curl "http://example.com/api/v1/market/pairs?type=market"
+curl "https://gate.kickex.com/api/v1/market/pairs?type=market"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -92,7 +93,7 @@ curl "http://example.com/api/v1/market/pairs?type=market"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/market/pairs?type=market`
+`GET https://gate.kickex.com/api/v1/market/pairs?type=market`
 
 ### Параметры URL 
 
@@ -115,7 +116,7 @@ state | integer | Да | Индикатор, показывающий, дост�
 ## All Tickers
 
 ```shell
-curl "http://example.com/api/v1/market/allTickers"
+curl "https://gate.kickex.com/api/v1/market/allTickers"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -161,7 +162,7 @@ curl "http://example.com/api/v1/market/allTickers"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/market/allTickers`
+`GET https://gate.kickex.com/api/v1/market/allTickers`
 
 ### Параметры URL
 
@@ -191,7 +192,7 @@ bestBidVolume | string | Да | количество криптовалюты п
 Метод возвращает данные по криптовалютной паре за последние 24 часа.
 
 ```shell
-curl "http://example.com/api/v1/market/stats24?pairName=BTC/USDT"
+curl "https://gate.kickex.com/api/v1/market/stats24?pairName=BTC/USDT"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -214,7 +215,7 @@ curl "http://example.com/api/v1/market/stats24?pairName=BTC/USDT"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/market/stats24?pairName=BTC/USDT`
+`GET https://gate.kickex.com/api/v1/market/stats24?pairName=BTC/USDT`
 
 ### Параметры URL 
 
@@ -244,7 +245,7 @@ timestamp | timestamp | Да | Время, на которое действит�
 В случае, если параметр в запросе не отправлен, предоставляется информация по всем криптовалютам платформы.
 
 ```shell
-curl "http://example.com/api/v1/currencies?currency=ETH"
+curl "https://gate.kickex.com/api/v1/currencies?currency=ETH"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -323,7 +324,7 @@ curl "http://example.com/api/v1/currencies?currency=ETH"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/currencies?currency=ETH`
+`GET https://gate.kickex.com/api/v1/currencies?currency=ETH`
 
 ### Параметры URL 
 
@@ -352,7 +353,7 @@ convertPath | array| Нет | Массив торговых пар. Если п�
 Запрос истории сделок по конкретной паре за последние 24 часа.
 
 ```shell
-curl "http://example.com/api/v1/minibars"
+curl "https://gate.kickex.com/api/v1/minibars"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -393,7 +394,7 @@ curl "http://example.com/api/v1/minibars"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/minibars`
+`GET https://gate.kickex.com/api/v1/minibars`
 
 Возвращает почасовые цены для всех пар за последние сутки.
 
@@ -414,7 +415,7 @@ bars | array | Да | свечи в формате <unix timestamp, цена з�
 Запрос истории сделок по конкретной паре за последние 24 часа.
 
 ```shell
-curl "http://example.com/api/v1/market/trades?pairName=BTC/USDT&type=buy"
+curl "https://gate.kickex.com/api/v1/market/trades?pairName=BTC/USDT&type=buy"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -431,7 +432,7 @@ curl "http://example.com/api/v1/market/trades?pairName=BTC/USDT&type=buy"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/market/trades?pairName=BTC/USDT&type=buy`
+`GET https://gate.kickex.com/api/v1/market/trades?pairName=BTC/USDT&type=buy`
 
 ### Параметры URL 
 
@@ -456,7 +457,7 @@ type | string | Да | Тип сделки покупка/продажа. <br/>�
 Запрос актуальных биржевых ордеров по валютной паре, может предоставлять как агрегированные, так и неагрегированные данные.
 
 ```shell
-curl "http://example.com/api/v1/market/orderbook?pairName=BTC/USDT&depth=20"
+curl "https://gate.kickex.com/api/v1/market/orderbook?pairName=BTC/USDT&depth=20"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -481,7 +482,7 @@ curl "http://example.com/api/v1/market/orderbook?pairName=BTC/USDT&depth=20"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/market/orderbook?pairName=BTC/USDT&depth=20`
+`GET https://gate.kickex.com/api/v1/market/orderbook?pairName=BTC/USDT&depth=20`
 
 ### Параметры URL 
 
@@ -503,7 +504,7 @@ asks | Array of string | Yes | Содержит в себе цену и коли
 ## Candles
 
 ```shell
-curl "http://example.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898"
+curl "https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -526,7 +527,7 @@ curl "http://example.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&start
 
 В случае, если время не указано, возвращается не более **???** результатов.
 
-`GET https://example.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898`
+`GET https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898`
 
 ### Параметры URL 
 
@@ -553,7 +554,7 @@ transactionAmount | string | Да | количество транзакций в
 ## Server time
 
 ```shell
-curl "http://example.com/api/v1/serverTime"
+curl "https://gate.kickex.com/api/v1/serverTime"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -571,7 +572,7 @@ curl "http://example.com/api/v1/serverTime"
 
 В случае, если время не указано, возвращается не более **???** результатов.
 
-`GET https://example.com/api/v1/serverTime`
+`GET https://gate.kickex.com/api/v1/serverTime`
 
 
 ### Параметры URL 
@@ -600,7 +601,7 @@ time | timestamp | Да | текущее серверное время в мс
 Метод отмены ордера.
 
 ```shell
-curl "http://example.com/api/v1/orders/{orderId}"
+curl "https://gate.kickex.com/api/v1/orders/{orderId}"
   -X DELETE
   -H "Authorization: meowmeowmeow"
 ```
@@ -618,7 +619,7 @@ curl "http://example.com/api/v1/orders/{orderId}"
 
 В случае, если время не указано, возвращается не более **???** результатов.
 
-`DELETE https://example.com/api/v1/orders/{orderId}`
+`DELETE https://gate.kickex.com/api/v1/orders/{orderId}`
 
 
 ### Параметры URL 
@@ -639,7 +640,7 @@ comment | string | Нет | ордер отменен / причина ошиб�
 Метод отмены группы ордеров или всех открытых ордеров.
 
 ```shell
-curl "http://example.com/api/v1/orders?pairName=BTC/USDT&orderType=STOP"
+curl "https://gate.kickex.com/api/v1/orders?pairName=BTC/USDT&orderType=STOP"
   -X DELETE
   -H "Authorization: meowmeowmeow"
 ```
@@ -663,7 +664,7 @@ curl "http://example.com/api/v1/orders?pairName=BTC/USDT&orderType=STOP"
 
 ### HTTP Запрос
 
-`DELETE https://example.com/api/v1/orders?pairName=BTC/USDT&orderType=STOP`
+`DELETE https://gate.kickex.com/api/v1/orders?pairName=BTC/USDT&orderType=STOP`
 
 ### Параметры URL 
 
@@ -688,7 +689,7 @@ reason | string | No | Причина ошибки
 Метод используется для отмены ордеров списком.
 
 ```shell
-curl "http://example.com/api/v1/cancelorders?orders=123456,14589655,12563369"
+curl "https://gate.kickex.com/api/v1/cancelorders?orders=123456,14589655,12563369"
   -X DELETE
   -H "Authorization: meowmeowmeow"
 ```
@@ -712,7 +713,7 @@ curl "http://example.com/api/v1/cancelorders?orders=123456,14589655,12563369"
 
 ### HTTP Запрос
 
-`DELETE https://example.com/api/v1/cancelorders?orders=123456,14589655,12563369`
+`DELETE https://gate.kickex.com/api/v1/cancelorders?orders=123456,14589655,12563369`
 
 ### Параметры URL 
 
@@ -736,7 +737,7 @@ reason | string | No | Причина ошибки
 Метод получения информации об истории ордеров пользователя.
 
 ```shell
-curl "http://example.com/api/v1/ordersHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535""
+curl "https://gate.kickex.com/api/v1/ordersHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535""
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -780,7 +781,7 @@ curl "http://example.com/api/v1/ordersHistory?pairName=KICK/BTC&startTime=123213
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/ordersHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535"`
+`GET https://gate.kickex.com/api/v1/ordersHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535"`
 
 
 ### Параметры URL 
@@ -819,7 +820,7 @@ slSubmitLevel | string | Нет | стоп уровень блока стоп л
 Метод получения информации об истории сделок пользователя.
 
 ```shell
-curl "http://example.com/api/v1/tradesHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535"
+curl "https://gate.kickex.com/api/v1/tradesHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -857,7 +858,7 @@ curl "http://example.com/api/v1/tradesHistory?pairName=KICK/BTC&startTime=123213
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/tradesHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535`
+`GET https://gate.kickex.com/api/v1/tradesHistory?pairName=KICK/BTC&startTime=123213123213213&endTime=32434523523535`
 
 
 ### Параметры URL 
@@ -894,7 +895,7 @@ sellVolume | string | Да | проданный объем в сделке
 Метод получения информации об активных ордерах.
 
 ```shell
-curl "http://example.com/api/v1/activeOrders?pairName=KICK/BTC"
+curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -942,7 +943,7 @@ curl "http://example.com/api/v1/activeOrders?pairName=KICK/BTC"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/activeOrders?pairName=KICK/BTC`
+`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC`
 
 
 ### Параметры URL 
@@ -979,7 +980,7 @@ triggeredSide | string | Нет | Если стоп был двойной, по�
 установка ордера
 
 ```shell
-curl "http://example.com/api/v1/createTradeOrder"
+curl "https://gate.kickex.com/api/v1/createTradeOrder"
   -X POST
   -H "Authorization: meowmeowmeow"
   -H "Content-Type: application/json"
@@ -996,7 +997,7 @@ curl "http://example.com/api/v1/createTradeOrder"
 
 ### HTTP Запрос
 
-`POST https://example.com/api/v1/createTradeOrder`
+`POST https://gate.kickex.com/api/v1/createTradeOrder`
 
 
 ### Параметры запроса 
@@ -1021,7 +1022,7 @@ orderId | integer | Да | Идентификатор созданного ор�
 установка стоп-ордера
 
 ```shell
-curl "http://example.com/api/v1/createStopOrder"
+curl "https://gate.kickex.com/api/v1/createStopOrder"
   -X POST
   -H "Authorization: meowmeowmeow"
   -H "Content-Type: application/json"
@@ -1038,7 +1039,7 @@ curl "http://example.com/api/v1/createStopOrder"
 
 ### HTTP Запрос
 
-`POST https://example.com/api/v1/createStopOrder`
+`POST https://gate.kickex.com/api/v1/createStopOrder`
 
 ### Параметры URL 
 
@@ -1075,7 +1076,7 @@ orderId | integer | Да | Идентификатор созданного ор�
 Основные данные о пользователе.
 
 ```shell
-curl "http://example.com/api/v1/userInfo"
+curl "https://gate.kickex.com/api/v1/userInfo"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -1092,7 +1093,7 @@ curl "http://example.com/api/v1/userInfo"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/userInfo`
+`GET https://gate.kickex.com/api/v1/userInfo`
 
 ### Параметры URL 
 
@@ -1113,7 +1114,7 @@ restrictions | integer | Да | Индикатор, показывающий, д
 Информация о балансе пользователя;
 
 ```shell
-curl "http://example.com/api/v1/user/balance"
+curl "https://gate.kickex.com/api/v1/user/balance"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -1141,7 +1142,7 @@ curl "http://example.com/api/v1/user/balance"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/user/balance`
+`GET https://gate.kickex.com/api/v1/user/balance`
 
 ### Параметры URL 
 
@@ -1162,7 +1163,7 @@ accountType | string | Да | номер счета <br/>2401 - основной
 Метод получения персонального адреса для пополнения.
 
 ```shell
-curl "http://example.com/api/v1/depositAddresses?currencyName=USDT&chain=ERC20"
+curl "https://gate.kickex.com/api/v1/depositAddresses?currencyName=USDT&chain=ERC20"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -1178,7 +1179,7 @@ curl "http://example.com/api/v1/depositAddresses?currencyName=USDT&chain=ERC20"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/depositAddresses?currencyName=USDT&chain=ERC20`
+`GET https://gate.kickex.com/api/v1/depositAddresses?currencyName=USDT&chain=ERC20`
 
 ### Параметры URL 
 
@@ -1202,7 +1203,7 @@ address | string | Да | адрес для пополнения
 Метод получения истории пополнений.
 
 ```shell
-curl "http://example.com/api/v1/depositHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success"
+curl "https://gate.kickex.com/api/v1/depositHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -1240,7 +1241,7 @@ curl "http://example.com/api/v1/depositHistory?сurrencyName=KICK&startTime=1588
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/depositHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success`
+`GET https://gate.kickex.com/api/v1/depositHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success`
 
 ### Параметры URL 
 
@@ -1271,7 +1272,7 @@ comment | string | Нет | комментарий (при наличии)
 Информация о скидках Пользователя
 
 ```shell
-curl "http://example.com/api/v1/user/tariff"
+curl "https://gate.kickex.com/api/v1/user/tariff"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -1297,7 +1298,7 @@ curl "http://example.com/api/v1/user/tariff"
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/user/tariff`
+`GET https://gate.kickex.com/api/v1/user/tariff`
 
 ### Параметры URL 
 
@@ -1327,7 +1328,7 @@ discount_details | object | Да | Объект, содержащий инфор
 Метод создания запроса на вывод средств.
 
 ```shell
-curl "http://example.com/api/v1/user/withdraw"
+curl "https://gate.kickex.com/api/v1/user/withdraw"
   -X POST
   -H "Authorization: meowmeowmeow"
   -H "Content-Type: application/json"
@@ -1348,7 +1349,7 @@ curl "http://example.com/api/v1/user/withdraw"
 
 ### HTTP Запрос
 
-`POST https://example.com/api/v1/user/withdraw`
+`POST https://gate.kickex.com/api/v1/user/withdraw`
 
 
 ### Параметры URL 
@@ -1372,7 +1373,7 @@ orderId | integer | Да | Идентификатор созданного ор�
 Метод для запроса истории вывода средств.
 
 ```shell
-curl "http://example.com/api/v1/withdrawalHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success"
+curl "https://gate.kickex.com/api/v1/withdrawalHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -1412,7 +1413,7 @@ curl "http://example.com/api/v1/withdrawalHistory?сurrencyName=KICK&startTime=1
 
 ### HTTP Запрос
 
-`GET https://example.com/api/v1/withdrawalHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success`
+`GET https://gate.kickex.com/api/v1/withdrawalHistory?сurrencyName=KICK&startTime=1588015708&endTime=1588024908&status=success`
 
 ### Параметры URL 
 
