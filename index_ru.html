@@ -377,7 +377,7 @@ $api_secret, true));
 <aside class="notice">
 Методы раздела <b>Market</b> доступны без авторизации.
 </aside></p>
-<h2 id='pairs'>Pairs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/pairs?type=market"</span>
+<h2 id='pairs'>Pairs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/pairs?type=market"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -407,7 +407,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/market/pairs?type=market</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/pairs?type=market</code></p>
 <h3 id='url'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -482,7 +482,7 @@ $api_secret, true));
 <td>Индикатор, показывающий, доступна ли торговля по паре:<br/>4 – доступна <br/>1,2,3 – недоступна</td>
 </tr>
 </tbody></table>
-<h2 id='all-tickers'>All Tickers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/allTickers"</span>
+<h2 id='all-tickers'>All Tickers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/allTickers"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -524,7 +524,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-2'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/market/allTickers</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/allTickers</code></p>
 <h3 id='url-2'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
 <h3 id='1300eba048-2'>Параметры ответа</h3>
@@ -623,7 +623,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='24hrs-stats'>24hrs stats</h2>
 <p>Метод возвращает данные по криптовалютной паре за последние 24 часа.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/stats24?pairName=BTC/USDT"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/stats24?pairName=BTC/USDT"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -642,7 +642,7 @@ $api_secret, true));
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588024908</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-3'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/market/stats24?pairName=BTC/USDT</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/stats24?pairName=BTC/USDT</code></p>
 <h3 id='url-3'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -737,7 +737,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='currency'>Currency</h2>
 <p>В случае, если параметр в запросе не отправлен, предоставляется информация по всем криптовалютам платформы.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/currencies?currency=ETH"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/currencies?currency=ETH"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -811,7 +811,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-4'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/currencies?currency=ETH</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/currencies?currency=ETH</code></p>
 <h3 id='url-4'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -906,7 +906,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='minibars'>Minibars</h2>
 <p>Запрос истории сделок по конкретной паре за последние 24 часа.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/minibars"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/minibars"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -942,7 +942,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-5'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/minibars</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/minibars</code></p>
 
 <p>Возвращает почасовые цены для всех пар за последние сутки.</p>
 <h3 id='url-5'>Параметры URL</h3>
@@ -971,7 +971,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='trades'>Trades</h2>
 <p>Запрос истории сделок по конкретной паре за последние 24 часа.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -984,7 +984,7 @@ $api_secret, true));
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-6'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy</code></p>
 <h3 id='url-6'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1049,7 +1049,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='orderbook'>Orderbook</h2>
 <p>Запрос актуальных биржевых ордеров по валютной паре, может предоставлять как агрегированные, так и неагрегированные данные.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1070,7 +1070,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-7'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20</code></p>
 <h3 id='url-7'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1127,7 +1127,7 @@ $api_secret, true));
 <td>Содержит в себе цену и количество криптовалюты</td>
 </tr>
 </tbody></table>
-<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898"</span>
+<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1146,7 +1146,7 @@ $api_secret, true));
 </span></code></pre><h3 id='http-8'>HTTP Запрос</h3>
 <p>В случае, если время не указано, возвращается не более <strong>???</strong> результатов.</p>
 
-<p><code>GET https://example.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
 <h3 id='url-8'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1233,7 +1233,7 @@ $api_secret, true));
 <td>количество транзакций в свече</td>
 </tr>
 </tbody></table>
-<h2 id='server-time'>Server time</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/serverTime"</span>
+<h2 id='server-time'>Server time</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/serverTime"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1246,7 +1246,7 @@ $api_secret, true));
 </span></code></pre><h3 id='http-9'>HTTP Запрос</h3>
 <p>В случае, если время не указано, возвращается не более <strong>???</strong> результатов.</p>
 
-<p><code>GET https://example.com/api/v1/serverTime</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/serverTime</code></p>
 <h3 id='url-9'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
 <h3 id='1300eba048-9'>Параметры ответа</h3>
@@ -1285,7 +1285,7 @@ $api_secret, true));
 </aside>
 <h2 id='cancel-order'>Cancel Order</h2>
 <p>Метод отмены ордера.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/orders/{orderId}"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/orders/{orderId}"</span>
   -X DELETE
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -1299,7 +1299,7 @@ $api_secret, true));
 </span></code></pre><h3 id='http-10'>HTTP Запрос</h3>
 <p>В случае, если время не указано, возвращается не более <strong>???</strong> результатов.</p>
 
-<p><code>DELETE https://example.com/api/v1/orders/{orderId}</code></p>
+<p><code>DELETE https://gate.kickex.com/api/v1/orders/{orderId}</code></p>
 <h3 id='url-10'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
 <h3 id='1300eba048-10'>Параметры ответа</h3>
@@ -1326,7 +1326,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='cancel-all-orders'>Cancel All Orders</h2>
 <p>Метод отмены группы ордеров или всех открытых ордеров.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP"</span>
   -X DELETE
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -1346,7 +1346,7 @@ $api_secret, true));
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='http-11'>HTTP Запрос</h3>
-<p><code>DELETE https://example.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP</code></p>
+<p><code>DELETE https://gate.kickex.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP</code></p>
 <h3 id='url-11'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1401,7 +1401,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='cancel-orders'>Cancel Orders</h2>
 <p>Метод используется для отмены ордеров списком.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/cancelorders?orders=123456,14589655,12563369"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/cancelorders?orders=123456,14589655,12563369"</span>
   -X DELETE
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -1421,7 +1421,7 @@ $api_secret, true));
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='http-12'>HTTP Запрос</h3>
-<p><code>DELETE https://example.com/api/v1/cancelorders?orders=123456,14589655,12563369</code></p>
+<p><code>DELETE https://gate.kickex.com/api/v1/cancelorders?orders=123456,14589655,12563369</code></p>
 <h3 id='url-12'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1476,7 +1476,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='orders-history'>Orders History</h2>
 <p>Метод получения информации об истории ордеров пользователя.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535""
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535""
 </span></code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1516,7 +1516,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-13'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535&quot;</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535&quot;</code></p>
 <h3 id='url-13'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1659,7 +1659,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='trade-history'>Trade History</h2>
 <p>Метод получения информации об истории сделок пользователя.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1693,7 +1693,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-14'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535</code></p>
 <h3 id='url-14'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1818,7 +1818,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='active-orders-list'>Active Orders List</h2>
 <p>Метод получения информации об активных ордерах.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1862,7 +1862,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-15'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/activeOrders?pairName=KICK/BTC</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC</code></p>
 <h3 id='url-15'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1987,7 +1987,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='create-trade-order'>Create Trade Order</h2>
 <p>установка ордера</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/createTradeOrder"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/createTradeOrder"</span>
   -X POST
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -2000,7 +2000,7 @@ $api_secret, true));
     </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-16'>HTTP Запрос</h3>
-<p><code>POST https://example.com/api/v1/createTradeOrder</code></p>
+<p><code>POST https://gate.kickex.com/api/v1/createTradeOrder</code></p>
 <h3 id='88964dca07'>Параметры запроса</h3>
 <table><thead>
 <tr>
@@ -2059,7 +2059,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='create-stop-order'>Create Stop Order</h2>
 <p>установка стоп-ордера</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/createStopOrder"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/createStopOrder"</span>
   -X POST
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -2072,7 +2072,7 @@ $api_secret, true));
     </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-17'>HTTP Запрос</h3>
-<p><code>POST https://example.com/api/v1/createStopOrder</code></p>
+<p><code>POST https://gate.kickex.com/api/v1/createStopOrder</code></p>
 <h3 id='url-16'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -2173,7 +2173,7 @@ $api_secret, true));
 </aside>
 <h2 id='user-info'>User Info</h2>
 <p>Основные данные о пользователе.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/userInfo"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/userInfo"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -2186,7 +2186,7 @@ $api_secret, true));
     </span><span class="s2">"restrictions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-18'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/userInfo</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/userInfo</code></p>
 <h3 id='url-17'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
 <h3 id='1300eba048-18'>Параметры ответа</h3>
@@ -2231,7 +2231,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='balance'>Balance</h2>
 <p>Информация о балансе пользователя;</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/user/balance"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/user/balance"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -2255,7 +2255,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-19'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/user/balance</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/user/balance</code></p>
 <h3 id='url-18'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
 <h3 id='1300eba048-19'>Параметры ответа</h3>
@@ -2300,7 +2300,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='deposit-address'>Deposit Address</h2>
 <p>Метод получения персонального адреса для пополнения.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -2312,7 +2312,7 @@ $api_secret, true));
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xc0DAa9e14343128cd50f7b934B5Bb23eddd3F246"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-20'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20</code></p>
 <h3 id='url-19'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -2371,7 +2371,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='deposit-history'>Deposit History</h2>
 <p>Метод получения истории пополнений.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -2405,7 +2405,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-21'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
 <h3 id='url-20'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -2512,7 +2512,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='tariff'>Tariff</h2>
 <p>Информация о скидках Пользователя</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/user/tariff"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/user/tariff"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -2534,7 +2534,7 @@ $api_secret, true));
     </span><span class="s2">"min_1d_activity_rest_dk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-22'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/user/tariff</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/user/tariff</code></p>
 <h3 id='url-21'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
 <h3 id='1300eba048-22'>Параметры ответа</h3>
@@ -2633,7 +2633,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='withdraw'>Withdraw (пока не реализовано)</h2>
 <p>Метод создания запроса на вывод средств.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/user/withdraw"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/user/withdraw"</span>
   -X POST
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -2650,7 +2650,7 @@ $api_secret, true));
     </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-23'>HTTP Запрос</h3>
-<p><code>POST https://example.com/api/v1/user/withdraw</code></p>
+<p><code>POST https://gate.kickex.com/api/v1/user/withdraw</code></p>
 <h3 id='url-22'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -2709,7 +2709,7 @@ $api_secret, true));
 </tbody></table>
 <h2 id='withdrawal-history'>Withdrawal History</h2>
 <p>Метод для запроса истории вывода средств.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -2745,7 +2745,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-24'>HTTP Запрос</h3>
-<p><code>GET https://example.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
 <h3 id='url-23'>Параметры URL</h3>
 <table><thead>
 <tr>

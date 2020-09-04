@@ -377,7 +377,7 @@ To create the request signature you need:</p>
 <aside class="notice">
 You don&#39;t need to authorize to use methods from <b>Market</b> section.
 </aside></p>
-<h2 id='pairs'>Pairs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/pairs?type=market"</span>
+<h2 id='pairs'>Pairs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/pairs?type=market"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -407,7 +407,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/market/pairs?type=market</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/pairs?type=market</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -482,7 +482,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
 <td>Attribute showing if trading on this currency pair or not: <br/>4 – trading is available <br/>1,2,3 – traiding is unavailable</td>
 </tr>
 </tbody></table>
-<h2 id='all-tickers'>All Tickers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/allTickers"</span>
+<h2 id='all-tickers'>All Tickers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/allTickers"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -524,7 +524,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/market/allTickers</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/allTickers</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <p><em>None.</em></p>
 <h3 id='response-parameters-2'>Response Parameters</h3>
@@ -623,7 +623,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
 </tbody></table>
 <h2 id='24hrs-stats'>24hrs stats</h2>
 <p>The method provides statistics on a currency pair during the last 24 hours.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/stats24?pairName=BTC/USDT"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/stats24?pairName=BTC/USDT"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -642,7 +642,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588024908</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/market/stats24?pairName=BTC/USDT</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/stats24?pairName=BTC/USDT</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -737,7 +737,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
 </tbody></table>
 <h2 id='currency'>Currency</h2>
 <p>The method provides data regarding specified currency. If <em>currency</em> parameter is not provided, returns data regarding all available currencies.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/currencies?currency=ETH"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/currencies?currency=ETH"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -811,7 +811,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/currencies?currency=ETH</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/currencies?currency=ETH</code>    </p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -906,7 +906,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
 </tbody></table>
 <h2 id='minibars'>Minibars</h2>
 <p>The method provides closure prices for last 24 hours for all currency pairs.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/minibars"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/minibars"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -942,7 +942,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/minibars</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/minibars</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <p><em>None.</em></p>
 <h3 id='response-parameters-5'>Response Parameters</h3>
@@ -969,7 +969,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
 </tbody></table>
 <h2 id='trades'>Trades</h2>
 <p>This method returns deals history during last 24 hours.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -982,7 +982,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/trades?pairName=BTC/USDT&amp;type=buy</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1048,7 +1048,7 @@ You don&#39;t need to authorize to use methods from <b>Market</b> section.
 <h2 id='orderbook'>Orderbook</h2>
 <p>This request is used to get current exchange orders by currency pair name.
 Provides both aggregated and particular data.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1069,7 +1069,7 @@ Provides both aggregated and particular data.</p>
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/orderbook?pairName=BTC/USDT&amp;depth=20</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1126,7 +1126,7 @@ Provides both aggregated and particular data.</p>
 <td>List of asks (price and amount)</td>
 </tr>
 </tbody></table>
-<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898"</span>
+<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1145,7 +1145,7 @@ Provides both aggregated and particular data.</p>
 </span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <p>If <code>startTime</code> or <code>endTime</code> are not provided, not more than <strong>???</strong> results are returned.</p>
 
-<p><code>GET https://example.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1232,7 +1232,7 @@ Provides both aggregated and particular data.</p>
 <td>Trades number within the candle</td>
 </tr>
 </tbody></table>
-<h2 id='server-time'>Server time</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/serverTime"</span>
+<h2 id='server-time'>Server time</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/serverTime"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1243,7 +1243,7 @@ Provides both aggregated and particular data.</p>
     </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588024908</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-9'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/serverTime</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/serverTime</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <p><em>None.</em></p>
 <h3 id='response-parameters-9'>Response Parameters</h3>
@@ -1282,7 +1282,7 @@ Authorization is needed to use these methods.
 </aside>
 <h2 id='cancel-order'>Cancel Order</h2>
 <p>Exchange order cancellation method.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/orders/{orderId}"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/orders/{orderId}"</span>
   -X DELETE
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -1294,7 +1294,7 @@ Authorization is needed to use these methods.
     </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
-<p><code>DELETE https://example.com/api/v1/orders/{orderId}</code></p>
+<p><code>DELETE https://gate.kickex.com/api/v1/orders/{orderId}</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <p><em>None.</em></p>
 <h3 id='response-parameters-10'>Response Parameters</h3>
@@ -1321,7 +1321,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='cancel-all-orders'>Cancel All Orders</h2>
 <p>Method used to cancel a group of orders or all the open orders.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP"</span>
   -X DELETE
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -1341,7 +1341,7 @@ Authorization is needed to use these methods.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
-<p><code>DELETE https://example.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP</code></p>
+<p><code>DELETE https://gate.kickex.com/api/v1/orders?pairName=BTC/USDT&amp;orderType=STOP</code></p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1396,7 +1396,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='cancel-orders'>Cancel Orders</h2>
 <p>Method used to cancel a group of open orders.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/cancelorders?orders=123456,14589655,12563369"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/cancelorders?orders=123456,14589655,12563369"</span>
   -X DELETE
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -1416,7 +1416,7 @@ Authorization is needed to use these methods.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='http-request-12'>HTTP Request</h3>
-<p><code>DELETE https://example.com/api/v1/cancelorders?orders=123456,14589655,12563369</code></p>
+<p><code>DELETE https://gate.kickex.com/api/v1/cancelorders?orders=123456,14589655,12563369</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1465,7 +1465,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='orders-history'>Orders History</h2>
 <p>This method is used to get data on the user&#39;s orders.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1505,7 +1505,7 @@ Authorization is needed to use these methods.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-13'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535&quot;</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/ordersHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535&quot;</code></p>
 <h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1648,7 +1648,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='trade-history'>Trade History</h2>
 <p>This method is used to get data on the user&#39;s trades.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1682,7 +1682,7 @@ Authorization is needed to use these methods.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-14'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/tradesHistory?pairName=KICK/BTC&amp;startTime=123213123213213&amp;endTime=32434523523535</code></p>
 <h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1807,7 +1807,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='active-orders-list'>Active Orders List</h2>
 <p>Method used to get information regarding all user&#39;s open (active) exchange orders.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1853,7 +1853,7 @@ Authorization is needed to use these methods.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-15'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/activeOrders?pairName=KICK/BTC</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1978,7 +1978,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='create-trade-order'>Create Trade Order</h2>
 <p>Method for trade order creation.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/createTradeOrder"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/createTradeOrder"</span>
   -X POST
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -1991,7 +1991,7 @@ Authorization is needed to use these methods.
     </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-16'>HTTP Request</h3>
-<p><code>POST https://example.com/api/v1/createTradeOrder</code></p>
+<p><code>POST https://gate.kickex.com/api/v1/createTradeOrder</code></p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -2050,7 +2050,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='create-stop-order'>Create Stop Order</h2>
 <p>Method for stop order creation.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/createStopOrder"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/createStopOrder"</span>
   -X POST
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -2063,7 +2063,7 @@ Authorization is needed to use these methods.
     </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-17'>HTTP Request</h3>
-<p><code>POST https://example.com/api/v1/createStopOrder</code></p>
+<p><code>POST https://gate.kickex.com/api/v1/createStopOrder</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -2164,7 +2164,7 @@ Authorization is needed to use these methods.
 </aside>
 <h2 id='user-info'>User Info</h2>
 <p>Main user data.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/userInfo"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/userInfo"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2177,7 +2177,7 @@ Authorization is needed to use these methods.
     </span><span class="s2">"restrictions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-18'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/userInfo</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/userInfo</code></p>
 <h3 id='url-parameters-16'>URL Parameters</h3>
 <p><em>None.</em></p>
 <h3 id='response-parameters-18'>Response Parameters</h3>
@@ -2222,7 +2222,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='balance'>Balance</h2>
 <p>User balance data.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/user/balance"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/user/balance"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2246,7 +2246,7 @@ Authorization is needed to use these methods.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-19'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/user/balance</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/user/balance</code></p>
 <h3 id='url-parameters-17'>URL Parameters</h3>
 <p><em>None.</em></p>
 <h3 id='response-parameters-19'>Response Parameters</h3>
@@ -2291,7 +2291,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='deposit-address'>Deposit Address</h2>
 <p>Method for getting personal deposit address.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2303,7 +2303,7 @@ Authorization is needed to use these methods.
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xc0DAa9e14343128cd50f7b934B5Bb23eddd3F246"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-20'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/depositAddresses?currencyName=USDT&amp;chain=ERC20</code></p>
 <h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2362,7 +2362,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='deposit-history'>Deposit History</h2>
 <p>This method provides deposit history.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2396,7 +2396,7 @@ Authorization is needed to use these methods.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-21'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/depositHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
 <h3 id='url-parameters-19'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2503,7 +2503,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='user-tariff'>User tariff</h2>
 <p>Method that returns current user&#39;s discounts information</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/user/tariff"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/user/tariff"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2526,7 +2526,7 @@ Authorization is needed to use these methods.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-22'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/user/tariff</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/user/tariff</code></p>
 <h3 id='url-parameters-20'>URL Parameters</h3>
 <p><em>None.</em></p>
 <h3 id='response-parameters-22'>Response Parameters</h3>
@@ -2625,7 +2625,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='withdraw-under-construction'>Withdraw (under construction)</h2>
 <p>Method for withdrawal request creation.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/user/withdraw"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/user/withdraw"</span>
   -X POST
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -2642,7 +2642,7 @@ Authorization is needed to use these methods.
     </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-23'>HTTP Request</h3>
-<p><code>POST https://example.com/api/v1/user/withdraw</code></p>
+<p><code>POST https://gate.kickex.com/api/v1/user/withdraw</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -2701,7 +2701,7 @@ Authorization is needed to use these methods.
 </tbody></table>
 <h2 id='withdrawal-history'>Withdrawal History</h2>
 <p>Method to get withdrawal history.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2737,7 +2737,7 @@ Authorization is needed to use these methods.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-24'>HTTP Request</h3>
-<p><code>GET https://example.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/withdrawalHistory?сurrencyName=KICK&amp;startTime=1588015708&amp;endTime=1588024908&amp;status=success</code></p>
 <h3 id='url-parameters-21'>URL Parameters</h3>
 <table><thead>
 <tr>
