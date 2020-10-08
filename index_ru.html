@@ -351,9 +351,9 @@
 
 <ul>
 <li>KICK-API-KEY - ключ API (выдаётся в <em>base64url</em> формате и должен быть декодирован перед генерацией KICK-SIGNATURE)</li>
-<li>KICK-API-PASS - парольная фраза ключа API (в формате (?))</li>
+<li>KICK-API-PASS - парольная фраза ключа API</li>
 <li>KICK-API-TIMESTAMP - время формирования запроса в формате TIMESTAMP (unix timestamp, в секундах)</li>
-<li>KICK-SIGNATURE - цифровой отпечаток запроса (в формате (?))</li>
+<li>KICK-SIGNATURE - цифровой отпечаток запроса</li>
 </ul>
 <pre class="highlight plaintext"><code>base64_encode(hash_hmac("sha512",
     hash_hmac("sha512",
@@ -1144,9 +1144,9 @@ $api_secret, true));
     </span><span class="s2">"transactionAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"271"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-8'>HTTP Запрос</h3>
-<p>В случае, если время не указано, возвращается не более <strong>???</strong> результатов.</p>
+<p>В случае, если время не указано, возвращается не более 4096 результатов.</p>
 
-<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=1&amp;pairName=KICK/BTC&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
 <h3 id='url-8'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1244,8 +1244,6 @@ $api_secret, true));
     </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588024908</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-9'>HTTP Запрос</h3>
-<p>В случае, если время не указано, возвращается не более <strong>???</strong> результатов.</p>
-
 <p><code>GET https://gate.kickex.com/api/v1/serverTime</code></p>
 <h3 id='url-9'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
@@ -1297,8 +1295,6 @@ $api_secret, true));
     </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-10'>HTTP Запрос</h3>
-<p>В случае, если время не указано, возвращается не более <strong>???</strong> результатов.</p>
-
 <p><code>DELETE https://gate.kickex.com/api/v1/orders/{orderId}</code></p>
 <h3 id='url-10'>Параметры URL</h3>
 <p><em>Отсутствуют.</em></p>
