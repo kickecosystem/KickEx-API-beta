@@ -351,9 +351,9 @@
 
 <ul>
 <li>KICK-API-KEY - API key (it is provided in <em>base64url</em> format and needs to be decoded to binary format before KICK-SIGNATURE generation)</li>
-<li>KICK-API-PASS - API key passphrase (format (?))</li>
+<li>KICK-API-PASS - API key passphrase</li>
 <li>KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)</li>
-<li>KICK-SIGNATURE - request signature (format (?))</li>
+<li>KICK-SIGNATURE - request signature</li>
 </ul>
 <pre class="highlight plaintext"><code>base64_encode(hash_hmac("sha512",
     hash_hmac("sha512",
