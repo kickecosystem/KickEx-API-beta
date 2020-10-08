@@ -27,9 +27,9 @@ API для внешней интеграции с биржей KickEX.
 Для аутентификации клиента и контроля целостности принимаемых сообщений к заголовкам запроса следует добавить следующие значения:
 
 * KICK-API-KEY - ключ API (выдаётся в *base64url* формате и должен быть декодирован перед генерацией KICK-SIGNATURE)
-* KICK-API-PASS - парольная фраза ключа API (в формате (?))
+* KICK-API-PASS - парольная фраза ключа API
 * KICK-API-TIMESTAMP - время формирования запроса в формате TIMESTAMP (unix timestamp, в секундах)
-* KICK-SIGNATURE - цифровой отпечаток запроса (в формате (?))
+* KICK-SIGNATURE - цифровой отпечаток запроса
 
 ```
 base64_encode(hash_hmac("sha512",
@@ -525,9 +525,9 @@ curl "https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&
 
 ### HTTP Запрос
 
-В случае, если время не указано, возвращается не более **???** результатов.
+В случае, если время не указано, возвращается не более 4096 результатов.
 
-`GET https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898`
+`GET https://gate.kickex.com/api/v1/market/bars/?period=1&pairName=KICK/BTC&startTime=22814882323&endTIme32222869898`
 
 ### Параметры URL 
 
@@ -569,8 +569,6 @@ curl "https://gate.kickex.com/api/v1/serverTime"
 
 
 ### HTTP Запрос
-
-В случае, если время не указано, возвращается не более **???** результатов.
 
 `GET https://gate.kickex.com/api/v1/serverTime`
 
@@ -617,7 +615,6 @@ curl "https://gate.kickex.com/api/v1/orders/{orderId}"
 
 ### HTTP Запрос
 
-В случае, если время не указано, возвращается не более **???** результатов.
 
 `DELETE https://gate.kickex.com/api/v1/orders/{orderId}`
 

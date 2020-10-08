@@ -279,15 +279,14 @@ curl "https://gate.kickex.com/api/v1/currencies?currency=ETH"
 {
 	"currencies": [
 		{
-			"currencyCode???": "ETH",
 			"currencyName": "ETH",
 			"fullName": "Ethereum",
 			"decimal": 8,
-			"minWithdawal???": "1",
-			"minFeeWithrawal???": "0.1",
-			"isWithdrawEnable???": true,
-			"isDepositEnable???": true,
-			"isExchangeEnable???": true,
+			"minWithdawal": "1",
+			"minFeeWithrawal": "0.1",
+			"isWithdrawEnable": true,
+			"isDepositEnable": true,
+			"isExchangeEnable": true,
 			"state": 4,
 			"convertPath": [
 				{
@@ -299,15 +298,14 @@ curl "https://gate.kickex.com/api/v1/currencies?currency=ETH"
 			]
 		},
 		{
-			"currencyCode???": "KICK",
 			"currencyName": "KICK",
 			"fullName": "Kick Token",
 			"decimal": 8,
-			"minWithdawal???": "1",
-			"minFeeWithrawal???": "0.1",
-			"isWithdrawEnable???": true,
-			"isDepositEnable???": false,
-			"isExchangeEnable???": true,
+			"minWithdawal": "1",
+			"minFeeWithrawal": "0.1",
+			"isWithdrawEnable": true,
+			"isDepositEnable": false,
+			"isExchangeEnable": true,
 			"state": 4,
 			"convertPath": [
 				{
@@ -335,16 +333,15 @@ currency | string | Yes | Currency short name *(ex: BTC)*
 ### Response Parameters
 Parameter | Type | Required | Description
 --------- | ----------- | ----------- | -----------
-isoCode | string | ? | Currency code
 currencyName | string | Yes | Currency short name
 fullName | string | Yes | Currency full name
 decimal | number | Yes | Currency fraction digits
-minWithdawal | string | ? | Minimum withdrawal amount
-minFeeWithrawal | string | ? | Minimum withdrawal fee
-isWithdrawEnable | boolean | ? | Is withdrawal available?
-isDepositEnable | boolean | ? | Is deposit available?
-isExchangeEnable | boolean | ? | Is exhange available?
-state | integer | ? | Attribute showing if trading on this currency pair or not: <br/>4 – trading is available <br/>1,2,3 – traiding is unavailable
+minWithdawal | string | No | Minimum withdrawal amount
+minFeeWithrawal | string | No | Minimum withdrawal fee
+isWithdrawEnable | boolean | No | Is withdrawal available?
+isDepositEnable | boolean | No | Is deposit available?
+isExchangeEnable | boolean | No | Is exhange available?
+state | integer | No | Attribute showing if trading on this currency pair or not: <br/>4 – trading is available <br/>1,2,3 – traiding is unavailable
 convertPath | array | No | Array of currency pairs needed for convertion. Empty array means the conversion is not needed. <br/>true - means that conversion rate should be multiplied by currency pair rate <br/>false - means that convetion rate should be divided by currency pair rate absolute value <br/>```[{"BTC/USDT": true},{"ETH/BTC": false}]```
 
 ## Minibars
@@ -518,9 +515,9 @@ curl "https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&
 
 ### HTTP Request
 
-If `startTime` or `endTime` are not provided, not more than **???** results are returned.
+If `startTime` or `endTime` are not provided, not more than 4096 results are returned.
 
-`GET https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898`
+`GET https://gate.kickex.com/api/v1/market/bars/?period=1&pairName=KICK/BTC&startTime=22814882323&endTIme32222869898`
 
 ### URL Parameters
 
@@ -783,8 +780,8 @@ orderId | string | Yes | Order unique identifier
 createdTimeStamp | timestamp | Yes | Order creation timestamp in nanoseconds
 tradeIntent | integer | Yes | Trade side <br/> 0 - BUY <br/>1 - SELL
 limitPrice | string | No | Will be returned for orders where limit price was set on creation.
-totalBuyVolume | string | Yes | Total bought volume **???**
-totalSellVolume | string | Yes | Total sold volume **???**
+totalBuyVolume | string | Yes | Total bought volume
+totalSellVolume | string | Yes | Total sold volume
 orderedVolume | string | Yes | Ordered volume of currency
 tpActivateLevel | string | No | Take profit activation level, will be returned if set on order creation.
 tpLimitPrice | string | No | Take profit limit price, will be returned if it was set on order creation.
@@ -938,8 +935,8 @@ orderId | string | Yes | Order unique identifier
 createdTimeStamp | timestamp | Yes | Order creation timestamp in nanoseconds
 side | integer | Yes | Trade side <br/> 0 - BUY <br/>1 - SALE
 limitPrice | string | No | Will be returned for orders where limit price was set on creation.
-totalBuyVolume | string | Yes | Total bought volume **???**
-totalSellVolume | string | Yes | Total sold volume **???**
+totalBuyVolume | string | Yes | Total bought volume
+totalSellVolume | string | Yes | Total sold volume
 orderedAmount | string | Yes | Ordered amount of currency
 tpActivateLeve | string | No | Take profit activation level, will be returned if set on order creation.
 tpLimitPrice | string | No | Take profit limit price, will be returned if it was set on order creation.
@@ -981,7 +978,7 @@ Parameter | Type | Required | Description
 --------- | ----------- | ----------- | -----------
 pairName | string | Yes | Currency pair name *(ex: KICK/ETH)*
 orderedAmount | string | Yes | Ordered currency amount
-limitPrice | string | No | **???**
+limitPrice | string | No | Limit price
 tradeIntent | integer | Yes | Possible values:<br/>0 - buy base currency, <br/>1 - sell base currency
 modifier | string | No | Possible value: GTC (if ommitted, the same is used)
 
