@@ -28,9 +28,9 @@ Welcome to the External API for KickEX exchange.
 For client authentication and integrity control the following attributes should be added to the request headers:
 
 * KICK-API-KEY - API key (it is provided in *base64url* format and needs to be decoded to binary format before KICK-SIGNATURE generation)
-* KICK-API-PASS - API key passphrase (format (?))
+* KICK-API-PASS - API key passphrase
 * KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)
-* KICK-SIGNATURE - request signature (format (?))
+* KICK-SIGNATURE - request signature
 
 ```
 base64_encode(hash_hmac("sha512",
