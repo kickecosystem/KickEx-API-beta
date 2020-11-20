@@ -890,9 +890,10 @@ sellVolume | string | Да | проданный объем в сделке
 ## Active Orders List
 
 Метод получения информации об активных ордерах.
+Выборка сортируется по уменьшению creation_ts и ограничена сотней ордеров. Если возвращается сто или более ордеров, то вероятно наличие других - более старых. Для их получения нужно повторить запрос, указав в аргументе creation_ts самого старого из полученных ордеров.
 
 ```shell
-curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
+curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -940,7 +941,7 @@ curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
 
 ### HTTP Запрос
 
-`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC`
+`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453`
 
 
 ### Параметры URL 
@@ -948,7 +949,7 @@ curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
 Параметр | Тип | Обязательный | Описание
 --------- | ----------- | ----------- | -----------
 pairName | string | Нет | Наименование криптовалютной пары, например KICK/BTC
-
+bottomOrderTs | string | Нет | Штамп времени (creation_ts, в наносекундах) из последнего видимого ордера.
 
 ### Параметры ответа
 

@@ -866,9 +866,10 @@ sellVolume | string | Yes | Trade sell volume
 ## Active Orders List
 
 Method used to get information regarding all user's open (active) exchange orders.
+The selection is sorted in descending order by creation_ts and is limited to 100 orders. If more than 100 orders are returned, there's a possibility that older orders appear in the selection. To fetch them you should rerun the query providing the oldest creation_ts in the first batch.
 
 ```shell
-curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
+curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453"
 ```
 
 > The above command returns JSON structured like this:
@@ -918,13 +919,14 @@ curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
 
 ### HTTP Request
 
-`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC`
+`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453`
 
 ### URL Parameters
 
 Parameter | Type | Required | Description
 --------- | ----------- | ----------- | -----------
 pairName | string | No | Currency pair name *(ex: KICK/BTC)*
+bottomOrderTs | string | No | Timestamp in nanoseconds, should be same as the value of creation_ts or the oldest order in previous batch.
 
 
 ### Response Parameters
