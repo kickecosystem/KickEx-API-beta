@@ -1798,9 +1798,8 @@ Authorization is needed to use these methods.
 </tr>
 </tbody></table>
 <h2 id='active-orders-list'>Active Orders List</h2>
-<p>Method used to get information regarding all user&#39;s open (active) exchange orders.
-The selection is sorted in descending order by creation_ts and is limited to 100 orders. If more than 100 orders are returned, there&#39;s a possibility that older orders appear in the selection. To fetch them you should rerun the query providing the oldest creation_ts in the first batch.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&amp;bottomOrderTs=1234343453"</span>
+<p>Method used to get information regarding all user&#39;s open (active) exchange orders.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1846,7 +1845,7 @@ The selection is sorted in descending order by creation_ts and is limited to 100
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-15'>HTTP Request</h3>
-<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&amp;bottomOrderTs=1234343453</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1861,12 +1860,6 @@ The selection is sorted in descending order by creation_ts and is limited to 100
 <td>string</td>
 <td>No</td>
 <td>Currency pair name <em>(ex: KICK/BTC)</em></td>
-</tr>
-<tr>
-<td>bottomOrderTs</td>
-<td>string</td>
-<td>No</td>
-<td>Timestamp in nanoseconds, should be same as the value of creation_ts or the oldest order in previous batch.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-15'>Response Parameters</h3>
