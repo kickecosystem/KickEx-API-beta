@@ -1813,8 +1813,9 @@ $api_secret, true));
 </tr>
 </tbody></table>
 <h2 id='active-orders-list'>Active Orders List</h2>
-<p>Метод получения информации об активных ордерах.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
+<p>Метод получения информации об активных ордерах.
+Выборка сортируется по уменьшению creation_ts и ограничена сотней ордеров. Если возвращается сто или более ордеров, то вероятно наличие других - более старых. Для их получения нужно повторить запрос, указав в аргументе creation_ts самого старого из полученных ордеров.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&amp;bottomOrderTs=1234343453"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1873,6 +1874,12 @@ $api_secret, true));
 <td>string</td>
 <td>Нет</td>
 <td>Наименование криптовалютной пары, например KICK/BTC</td>
+</tr>
+<tr>
+<td>bottomOrderTs</td>
+<td>string</td>
+<td>Нет</td>
+<td>Штамп времени (creation_ts, в наносекундах) из последнего видимого ордера.</td>
 </tr>
 </tbody></table>
 <h3 id='1300eba048-15'>Параметры ответа</h3>
