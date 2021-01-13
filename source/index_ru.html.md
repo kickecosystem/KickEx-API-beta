@@ -26,19 +26,21 @@ API для внешней интеграции с биржей KickEX.
 
 Для аутентификации клиента и контроля целостности принимаемых сообщений к заголовкам запроса следует добавить следующие значения:
 
-* KICK-API-KEY - ключ API (выдаётся в *base64url* формате и должен быть декодирован перед генерацией KICK-SIGNATURE)
+* KICK-API-KEY - сначала нужно <a href="https://id.kickex.com/settings/api">создать новый API key</a>, а затем передавать в запросах значение атрибута **key**.
 * KICK-API-PASS - парольная фраза ключа API
 * KICK-API-TIMESTAMP - время формирования запроса в формате TIMESTAMP (unix timestamp, в секундах)
 * KICK-SIGNATURE - цифровой отпечаток запроса
+* User-Agent: любая строка
+* Content-Type: application/json
 
 ```
-base64_encode(hash_hmac("sha512",
-	hash_hmac("sha512",
-		hash_hmac("sha512",
-			hash_hmac("sha512", $timestamp, $method, true),
-		$request_path, true),
-	$body, true),
-$api_secret, true));
+base64_encode(hash_hmac("sha512", $api_secret,
+	hash_hmac("sha512", $body, 
+		hash_hmac("sha512", $request_path, 
+			hash_hmac("sha512", $method, $timestamp, true),
+		true),
+	true),
+true));
 ```
 
 Цифровой отпечаток запроса предназначен для контроля целостности получаемых сервером данных. В формировании цифрового отпечатка используется **API Secret**, который не передается от клиента к серверу в процессе работы с REST API.
@@ -504,7 +506,7 @@ asks | Array of string | Yes | Содержит в себе цену и коли
 ## Candles
 
 ```shell
-curl "https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898"
+curl "https://gate.kickex.com/api/v1/market/bars/?period=60&pairName=KICK/USDT&startTime=1607385600000&endTIme=1607471999000"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -527,7 +529,7 @@ curl "https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&
 
 В случае, если время не указано, возвращается не более 4096 результатов.
 
-`GET https://gate.kickex.com/api/v1/market/bars/?period=1&pairName=KICK/BTC&startTime=22814882323&endTIme32222869898`
+`GET https://gate.kickex.com/api/v1/market/bars/?period=60&pairName=KICK/USDT&startTime=1607385600000&endTIme=1607471999000`
 
 ### Параметры URL 
 
@@ -890,9 +892,10 @@ sellVolume | string | Да | проданный объем в сделке
 ## Active Orders List
 
 Метод получения информации об активных ордерах.
+Выборка сортируется по уменьшению creation_ts и ограничена сотней ордеров. Если возвращается сто или более ордеров, то вероятно наличие других - более старых. Для их получения нужно повторить запрос, указав в аргументе creation_ts самого старого из полученных ордеров.
 
 ```shell
-curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
+curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453"
 ```
 
 > Команда выше вернёт структуру следующего вида:
@@ -940,7 +943,7 @@ curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
 
 ### HTTP Запрос
 
-`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC`
+`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453`
 
 
 ### Параметры URL 
@@ -948,7 +951,7 @@ curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
 Параметр | Тип | Обязательный | Описание
 --------- | ----------- | ----------- | -----------
 pairName | string | Нет | Наименование криптовалютной пары, например KICK/BTC
-
+bottomOrderTs | string | Нет | Штамп времени (creation_ts, в наносекундах) из последнего видимого ордера.
 
 ### Параметры ответа
 

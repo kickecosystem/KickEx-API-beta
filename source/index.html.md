@@ -27,19 +27,19 @@ Welcome to the External API for KickEX exchange.
 
 For client authentication and integrity control the following attributes should be added to the request headers:
 
-* KICK-API-KEY - API key (it is provided in *base64url* format and needs to be decoded to binary format before KICK-SIGNATURE generation)
+* KICK-API-KEY - First you should <a href="https://id.kickex.com/settings/api">creat a new API key</a>, and then use the **key** value as KICK-API_KEY in all requests.
 * KICK-API-PASS - API key passphrase
 * KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)
 * KICK-SIGNATURE - request signature
 
 ```
-base64_encode(hash_hmac("sha512",
-	hash_hmac("sha512",
-		hash_hmac("sha512",
-			hash_hmac("sha512", $timestamp, $method, true),
-		$request_path, true),
-	$body, true),
-$api_secret, true));
+base64_encode(hash_hmac("sha512", $api_secret,
+	hash_hmac("sha512", $body, 
+		hash_hmac("sha512", $request_path, 
+			hash_hmac("sha512", $method, $timestamp, true),
+		true),
+	true),
+true));
 ```
 Request signature is need for the integrity control of the request on server-side. To create the request signature you need to use **API Secret** that is not included in the request headers.
 To create the request signature you need:
@@ -494,7 +494,7 @@ asks | Array of string | Yes | List of asks (price and amount)
 ## Candles
 
 ```shell
-curl "https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&startTime=22814882323&endTIme32222869898"
+curl "https://gate.kickex.com/api/v1/market/bars/?period=60&pairName=KICK/USDT&startTime=1607385600000&endTIme=1607471999000"
 ```
 
 > The above command returns JSON structured like this:
@@ -517,7 +517,7 @@ curl "https://gate.kickex.com/api/v1/market/bars/?period=5min&pairName=BTC/USDT&
 
 If `startTime` or `endTime` are not provided, not more than 4096 results are returned.
 
-`GET https://gate.kickex.com/api/v1/market/bars/?period=1&pairName=KICK/BTC&startTime=22814882323&endTIme32222869898`
+`GET https://gate.kickex.com/api/v1/market/bars/?period=60&pairName=KICK/USDT&startTime=1607385600000&endTIme=1607471999000`
 
 ### URL Parameters
 
@@ -866,9 +866,10 @@ sellVolume | string | Yes | Trade sell volume
 ## Active Orders List
 
 Method used to get information regarding all user's open (active) exchange orders.
+The selection is sorted in descending order by creation_ts and is limited to 100 orders. If more than 100 orders are returned, there's a possibility that older orders appear in the selection. To fetch them you should rerun the query providing the oldest creation_ts in the first batch.
 
 ```shell
-curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
+curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453"
 ```
 
 > The above command returns JSON structured like this:
@@ -918,13 +919,14 @@ curl "https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"
 
 ### HTTP Request
 
-`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC`
+`GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&bottomOrderTs=1234343453`
 
 ### URL Parameters
 
 Parameter | Type | Required | Description
 --------- | ----------- | ----------- | -----------
 pairName | string | No | Currency pair name *(ex: KICK/BTC)*
+bottomOrderTs | string | No | Timestamp in nanoseconds, should be same as the value of creation_ts or the oldest order in previous batch.
 
 
 ### Response Parameters
