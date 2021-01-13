@@ -350,18 +350,20 @@
 <p>Для аутентификации клиента и контроля целостности принимаемых сообщений к заголовкам запроса следует добавить следующие значения:</p>
 
 <ul>
-<li>KICK-API-KEY - ключ API (выдаётся в <em>base64url</em> формате и должен быть декодирован перед генерацией KICK-SIGNATURE)</li>
+<li>KICK-API-KEY - сначала нужно <a href="https://id.kickex.com/settings/api">создать новый API key</a>, а затем передавать в запросах значение атрибута <strong>key</strong>.</li>
 <li>KICK-API-PASS - парольная фраза ключа API</li>
 <li>KICK-API-TIMESTAMP - время формирования запроса в формате TIMESTAMP (unix timestamp, в секундах)</li>
 <li>KICK-SIGNATURE - цифровой отпечаток запроса</li>
+<li>User-Agent: любая строка</li>
+<li>Content-Type: application/json</li>
 </ul>
-<pre class="highlight plaintext"><code>base64_encode(hash_hmac("sha512",
-    hash_hmac("sha512",
-        hash_hmac("sha512",
-            hash_hmac("sha512", $timestamp, $method, true),
-        $request_path, true),
-    $body, true),
-$api_secret, true));
+<pre class="highlight plaintext"><code>base64_encode(hash_hmac("sha512", $api_secret,
+    hash_hmac("sha512", $body, 
+        hash_hmac("sha512", $request_path, 
+            hash_hmac("sha512", $method, $timestamp, true),
+        true),
+    true),
+true));
 </code></pre>
 <p>Цифровой отпечаток запроса предназначен для контроля целостности получаемых сервером данных. В формировании цифрового отпечатка используется <strong>API Secret</strong>, который не передается от клиента к серверу в процессе работы с REST API.
 Цифровой отпечаток запроса создается на основе:</p>
@@ -1127,7 +1129,7 @@ $api_secret, true));
 <td>Содержит в себе цену и количество криптовалюты</td>
 </tr>
 </tbody></table>
-<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898"</span>
+<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/bars/?period=60&amp;pairName=KICK/USDT&amp;startTime=1607385600000&amp;endTIme=1607471999000"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1146,7 +1148,7 @@ $api_secret, true));
 </span></code></pre><h3 id='http-8'>HTTP Запрос</h3>
 <p>В случае, если время не указано, возвращается не более 4096 результатов.</p>
 
-<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=1&amp;pairName=KICK/BTC&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=60&amp;pairName=KICK/USDT&amp;startTime=1607385600000&amp;endTIme=1607471999000</code></p>
 <h3 id='url-8'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1813,8 +1815,9 @@ $api_secret, true));
 </tr>
 </tbody></table>
 <h2 id='active-orders-list'>Active Orders List</h2>
-<p>Метод получения информации об активных ордерах.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
+<p>Метод получения информации об активных ордерах.
+Выборка сортируется по уменьшению creation_ts и ограничена сотней ордеров. Если возвращается сто или более ордеров, то вероятно наличие других - более старых. Для их получения нужно повторить запрос, указав в аргументе creation_ts самого старого из полученных ордеров.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&amp;bottomOrderTs=1234343453"</span>
 </code></pre>
 <blockquote>
 <p>Команда выше вернёт структуру следующего вида:</p>
@@ -1858,7 +1861,7 @@ $api_secret, true));
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-15'>HTTP Запрос</h3>
-<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&amp;bottomOrderTs=1234343453</code></p>
 <h3 id='url-15'>Параметры URL</h3>
 <table><thead>
 <tr>
@@ -1873,6 +1876,12 @@ $api_secret, true));
 <td>string</td>
 <td>Нет</td>
 <td>Наименование криптовалютной пары, например KICK/BTC</td>
+</tr>
+<tr>
+<td>bottomOrderTs</td>
+<td>string</td>
+<td>Нет</td>
+<td>Штамп времени (creation_ts, в наносекундах) из последнего видимого ордера.</td>
 </tr>
 </tbody></table>
 <h3 id='1300eba048-15'>Параметры ответа</h3>

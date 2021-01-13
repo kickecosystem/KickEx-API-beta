@@ -350,18 +350,18 @@
 <p>For client authentication and integrity control the following attributes should be added to the request headers:</p>
 
 <ul>
-<li>KICK-API-KEY - API key (it is provided in <em>base64url</em> format and needs to be decoded to binary format before KICK-SIGNATURE generation)</li>
+<li>KICK-API-KEY - First you should <a href="https://id.kickex.com/settings/api">creat a new API key</a>, and then use the <strong>key</strong> value as KICK-API_KEY in all requests.</li>
 <li>KICK-API-PASS - API key passphrase</li>
 <li>KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)</li>
 <li>KICK-SIGNATURE - request signature</li>
 </ul>
-<pre class="highlight plaintext"><code>base64_encode(hash_hmac("sha512",
-    hash_hmac("sha512",
-        hash_hmac("sha512",
-            hash_hmac("sha512", $timestamp, $method, true),
-        $request_path, true),
-    $body, true),
-$api_secret, true));
+<pre class="highlight plaintext"><code>base64_encode(hash_hmac("sha512", $api_secret,
+    hash_hmac("sha512", $body, 
+        hash_hmac("sha512", $request_path, 
+            hash_hmac("sha512", $method, $timestamp, true),
+        true),
+    true),
+true));
 </code></pre>
 <p>Request signature is need for the integrity control of the request on server-side. To create the request signature you need to use <strong>API Secret</strong> that is not included in the request headers.
 To create the request signature you need:</p>
@@ -1118,7 +1118,7 @@ Provides both aggregated and particular data.</p>
 <td>List of asks (price and amount)</td>
 </tr>
 </tbody></table>
-<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/bars/?period=5min&amp;pairName=BTC/USDT&amp;startTime=22814882323&amp;endTIme32222869898"</span>
+<h2 id='candles'>Candles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/market/bars/?period=60&amp;pairName=KICK/USDT&amp;startTime=1607385600000&amp;endTIme=1607471999000"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1137,7 +1137,7 @@ Provides both aggregated and particular data.</p>
 </span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <p>If <code>startTime</code> or <code>endTime</code> are not provided, not more than 4096 results are returned.</p>
 
-<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=1&amp;pairName=KICK/BTC&amp;startTime=22814882323&amp;endTIme32222869898</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/market/bars/?period=60&amp;pairName=KICK/USDT&amp;startTime=1607385600000&amp;endTIme=1607471999000</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1798,8 +1798,9 @@ Authorization is needed to use these methods.
 </tr>
 </tbody></table>
 <h2 id='active-orders-list'>Active Orders List</h2>
-<p>Method used to get information regarding all user&#39;s open (active) exchange orders.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC"</span>
+<p>Method used to get information regarding all user&#39;s open (active) exchange orders.
+The selection is sorted in descending order by creation_ts and is limited to 100 orders. If more than 100 orders are returned, there&#39;s a possibility that older orders appear in the selection. To fetch them you should rerun the query providing the oldest creation_ts in the first batch.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&amp;bottomOrderTs=1234343453"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1845,7 +1846,7 @@ Authorization is needed to use these methods.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-15'>HTTP Request</h3>
-<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC</code></p>
+<p><code>GET https://gate.kickex.com/api/v1/activeOrders?pairName=KICK/BTC&amp;bottomOrderTs=1234343453</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1860,6 +1861,12 @@ Authorization is needed to use these methods.
 <td>string</td>
 <td>No</td>
 <td>Currency pair name <em>(ex: KICK/BTC)</em></td>
+</tr>
+<tr>
+<td>bottomOrderTs</td>
+<td>string</td>
+<td>No</td>
+<td>Timestamp in nanoseconds, should be same as the value of creation_ts or the oldest order in previous batch.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-15'>Response Parameters</h3>
