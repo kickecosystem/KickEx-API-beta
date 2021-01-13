@@ -31,6 +31,8 @@ For client authentication and integrity control the following attributes should 
 * KICK-API-PASS - API key passphrase
 * KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)
 * KICK-SIGNATURE - request signature
+* User-Agent: some string
+* Content-Type: application/json
 
 ```
 base64_encode(hash_hmac("sha512", $api_secret,
