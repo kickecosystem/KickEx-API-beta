@@ -354,6 +354,8 @@
 <li>KICK-API-PASS - API key passphrase</li>
 <li>KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)</li>
 <li>KICK-SIGNATURE - request signature</li>
+<li>User-Agent: some string</li>
+<li>Content-Type: application/json</li>
 </ul>
 <pre class="highlight plaintext"><code>base64_encode(hash_hmac("sha512", $api_secret,
     hash_hmac("sha512", $body, 
