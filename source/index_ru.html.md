@@ -865,8 +865,8 @@ curl "https://gate.kickex.com/api/v1/tradesHistory?pairName=KICK/BTC&startTime=1
 Параметр | Тип | Обязательный | Описание
 --------- | ----------- | ----------- | -----------
 pairName | string | Да | Наименование криптовалютной пары, например KICK/BTC
-startTime | timestamp | Нет | Время начала периода, в мс
-endTime | timestamp | Нет | время окончания периода, в мс
+startTime | timestamp | Нет | Время начала периода, в наносекундах
+endTime | timestamp | Нет | время окончания периода, в наносекундах
 pageSize | string | Нет | Размер страницы, не более 100 сделок
 tradeIntent | integer | Нет | сторон сделки, 0-BUY, 1- SELL
 tsnBottomDeal | timestamp | Нет | Штамп времени в наносекундах последней полученной на прошлой странице сделки, после которого нужно получать сделки.
