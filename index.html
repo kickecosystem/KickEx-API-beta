@@ -351,7 +351,16 @@
 
 <ul>
 <li>KICK-API-KEY - First you should <a href="https://id.kickex.com/settings/api">creat a new API key</a>, and then use the <strong>key</strong> value as KICK-API_KEY in all requests.</li>
-<li>KICK-API-PASS - API key passphrase</li>
+<li>KICK-API-PASS - API key passphrase. Passphrase requirements:
+
+<ul>
+<li>length between 20 and 160 characters</li>
+<li>contains lower-case English letters</li>
+<li>contains upper-case English letters</li>
+<li>contains numbers</li>
+<li>contains special characters !#$%^-=&amp;*()@[].,:;</li>
+<li>doesn&#39;t contain any other characters including spaces</li>
+</ul></li>
 <li>KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)</li>
 <li>KICK-SIGNATURE - request signature</li>
 <li>User-Agent: some string</li>
