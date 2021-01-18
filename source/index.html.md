@@ -767,8 +767,8 @@ curl "https://gate.kickex.com/api/v1/ordersHistory?pairName=KICK/BTC&startTime=1
 Parameter | Type | Required | Description
 --------- | ----------- | ----------- | -----------
 pairName | string | Yes | Currency pair name *(ex: KICK/BTC)*
-startTIme | timestamp | No | Start time in milliseconds
-endTime | timestamp | No | End time in milliseconds
+startTIme | timestamp | No | Start time in nanoseconds
+endTime | timestamp | No | End time in nanoseconds
 pageSize | string | No | Page size, up to 100 orders
 tradeIntent | integer | No | Trade side <br/> 0 - BUY <br/>1 - SELL
 tsnBottomOrder | timestamp | No | Timestamp of order creation in nanoseconds (10^-9) of the last order on previous page (after which orders should be requested), if not the first page is requested.
