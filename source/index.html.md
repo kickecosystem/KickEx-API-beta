@@ -28,7 +28,13 @@ Welcome to the External API for KickEX exchange.
 For client authentication and integrity control the following attributes should be added to the request headers:
 
 * KICK-API-KEY - First you should <a href="https://id.kickex.com/settings/api">creat a new API key</a>, and then use the **key** value as KICK-API_KEY in all requests.
-* KICK-API-PASS - API key passphrase
+* KICK-API-PASS - API key passphrase. Passphrase requirements:
+    - length between 20 and 160 characters
+	- contains lower-case English letters
+	- contains upper-case English letters
+	- contains numbers
+	- contains special characters !#$%^-=&*()@[].,:;
+	- doesn't contain any other characters including spaces
 * KICK-API-TIMESTAMP - TIMESTAMP of the request (unix timestamp, seconds)
 * KICK-SIGNATURE - request signature
 * User-Agent: some string
